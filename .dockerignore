@@ -1,0 +1,39 @@
+# Node modules
+**/node_modules
+**/npm-debug.log
+
+# Build artifacts
+**/dist
+**/build
+**/coverage
+
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+
+# Editor directories
+.idea
+.vscode
+*.swp
+*.swo
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# OS specific
+.DS_Store
+
+# Logs
+**/audit_logs.json
+**/logs
+
+# Tests
+**/tests
+**/playwright-report
+**/test-results

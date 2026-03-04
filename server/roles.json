@@ -1,0 +1,60 @@
+{
+  "creator": {
+    "name": "Creator",
+    "description": "Room Creator with absolute control",
+    "color": "#ff0000",
+    "permissions": {
+      "canManageRoles": true,
+      "canMuteOthers": true,
+      "canKickUsers": true,
+      "canRecord": true,
+      "canShareScreen": true,
+      "canChat": true,
+      "canCloseRoom": true
+    },
+    "inherits": "admin"
+  },
+  "admin": {
+    "name": "Admin",
+    "description": "System Administrator with full access",
+    "color": "#800080",
+    "permissions": {
+      "canManageRoles": true,
+      "canMuteOthers": true,
+      "canKickUsers": true,
+      "canRecord": true,
+      "canShareScreen": true,
+      "canChat": true,
+      "canCloseRoom": false
+    },
+    "inherits": null
+  },
+  "host": {
+    "name": "Host",
+    "description": "Meeting Host",
+    "color": "#00ff00",
+    "permissions": {
+      "canManageRoles": false,
+      "canMuteOthers": true,
+      "canKickUsers": true,
+      "canRecord": true,
+      "canShareScreen": true,
+      "canChat": true
+    },
+    "inherits": "participant"
+  },
+  "participant": {
+    "name": "Participant",
+    "description": "Regular meeting attendee",
+    "color": "#0000ff",
+    "permissions": {
+      "canManageRoles": false,
+      "canMuteOthers": false,
+      "canKickUsers": false,
+      "canRecord": false,
+      "canShareScreen": true,
+      "canChat": true
+    },
+    "inherits": null
+  }
+}

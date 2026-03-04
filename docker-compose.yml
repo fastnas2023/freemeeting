@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: freemeeting:latest
+    container_name: freemeeting-app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-5002}:5002"
+    environment:
+      - NODE_ENV=production
+      - PORT=5002
+      - DATA_DIR=/app/data
+      - AGORA_APP_ID=${AGORA_APP_ID}
+      - AGORA_APP_CERTIFICATE=${AGORA_APP_CERTIFICATE}
+      - MEETING_PASSWORD=${MEETING_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - freemeeting-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  freemeeting-net:
+    driver: bridge
